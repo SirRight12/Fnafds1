@@ -1,0 +1,172 @@
+body,html {
+    background: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+p.text {
+    color: white;
+    font-family: Trebuchet MS;
+    font-size: 275%;
+    position: absolute;
+}
+img.fan {
+  width: 10%;
+  height: 27%;
+  z-index: 100;
+  position: absolute;
+  display: none;
+  left: 48.7%;
+  top: 38.5%;
+}
+p.loading {
+    color: white;
+    font-family: cursive;
+    font-size: 275%;
+    display: none;
+}
+div.loading {
+    display: none;
+}
+#baboon {
+    position: absolute;
+    top: 60%;
+    display: none;
+}
+.settings {
+    height: 5%;
+    width: 2.75%;
+    position: absolute;
+}
+#newspaper {
+    position: absolute;
+    display: none;
+}
+.office {
+  display: none;
+  position: absolute;
+  height: 180%;
+  width: 400%;
+  top: -10%;
+  left: -150%;
+}
+.button {
+  z-index: 100;
+  position: absolute;
+  display: none;
+  height: 20%;
+  width: 4%;
+}
+#camerathing {
+    width: 100%;
+    z-index: 100;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+img.camframe {
+  width: 300%;
+  z-index: 1;
+  position: relative;
+  height: 100%;
+  left:0%;
+  display: none;
+  animation: testtthing 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+.map {
+  width: 35%;
+  height: 50%;
+  position:absolute;
+  left: 65%;
+  z-index:1001;
+}
+.mapbutton {
+ z-index:1002;
+  width: 3.99%;
+  background: green;
+  height: 4.99%;
+  position: absolute;
+}
+#boop {
+  background: green;
+  height: 3%;
+  width: 1.5%;
+  z-index: 10;
+  position: absolute;
+  left: 39%;
+  top: 27%;
+  opacity: 0;
+}
+#cam1a {
+  left: 76.1%;
+  top: 25.4%;
+  opacity: 0;
+}
+#cam1b {
+  left: 74.9%;
+  top: 34.4%;
+  opacity: 0;
+}
+#cam1c {
+  top: 45.3%;
+  left: 71.1%;
+  opacity: 0;
+}
+#cam5 {
+  left: 67.17%;
+  top: 38.8%;
+  opacity: 0;
+}
+#cam7 {
+  left: 93.2%;
+  top: 36.8%;
+  opacity: 0;
+}
+#cam2a {
+  left: 75.9%;
+  top: 62.2%;
+  opacity: 0;
+}
+#cam2b {
+  left: 75.9%;
+  top: 68.6%;
+  opacity: 0;
+}
+#cam4a {
+  left: 83.3%;
+  top: 62.5%;
+  opacity: 0;
+}
+
+#cam4b {
+  left: 83.3%;
+  top: 68.6%;
+  opacity: 0;
+}
+#cam3 {
+  left: 69.8%;
+  top: 58%;
+  opacity: 0;
+}
+@keyframes testtthing {
+  1% {left:0%;}
+  10% {left:0%;}
+  50% {left:12%;}
+  60% {left:12%;}
+  100% {left:0%;}
+}
+@keyframes glide {
+    1% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes disappear {
+    1% {opacity: 1;}
+    100% {opacity: 0;}
+}
