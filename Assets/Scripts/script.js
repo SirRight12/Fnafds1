@@ -903,6 +903,7 @@ function decreasepower() {
    energy.innerHTML = "Power: " + displaypower
    } else if (power < 1&&poweroff == false) {
       poweroff = true
+      officeambience.pause()
       console.log("bozo")
       if (lookat == "camera") {
          test = setInterval(bozoreverse,30)
