@@ -3,6 +3,9 @@ deleteit.remove()
 var opentext = document.getElementById("opentext")
 var times = 0
 var startism;
+var usagelvl = 1
+var usage = document.getElementById("usage")
+var usagetxt = document.getElementById("usagetxt")
 var static = document.getElementById("static")
 var cams = document.getElementById("camera")
 var flipcam = document.getElementById("flipcams")
@@ -44,13 +47,31 @@ var freddypos = "1A"
 var foxypos = 0
 var bonnielvl = 10
 var freddylvl = 4
-var foxylvl = 3
+var foxylvl = 0
 var chicalvl = 10
 var diefreddy;
+var jumpscaresound = document.getElementById("ahhhhhh")
 var nose = document.getElementById("boop")
 var boop = document.getElementById("beep")
 var rightdoorimg = document.getElementById("rightdoor")
 // < -155% showbutton
+//too many sounds someone please send help
+var slam = document.getElementById("slam")
+var lightbzz1 = document.getElementById("lightbuzz1")
+var lightbzz2 = document.getElementById("lightbuzz2")
+var nalk1 = document.getElementById("nalk1")
+var nalk2 = document.getElementById("nalk2")
+var nalkloop = document.getElementById("nalkloop")
+var night1 = document.getElementById("hello1")
+var night2 = document.getElementById("hello2")
+var night3 = document.getElementById("hello3")
+var night4 = document.getElementById("hello4")
+var night5 = document.getElementById("hello5")
+
+
+
+
+
 function honk() {
    if (lookat == "office") {
       boop.play()
@@ -61,6 +82,9 @@ function rightdoor() {
     if (ypos < 61&&dooranimplaying == false) {
       if (rightdoorclose == false&&poweroff == false)  {
        shutright()
+       slam.load()
+       slam.play()
+       increaseusage()
          decreaseby += 2.5
        doorright = 1
          clearTimeout(diefreddy)
@@ -70,6 +94,9 @@ function rightdoor() {
        clearTimeout(diefreddy)
       } else if (rightdoorclose&&poweroff == false) {
          shutrightreverse()
+         decreaseusage()
+         slam.load()
+         slam.play()
          doorright = 0
          if (freddypos == "4B"&&poweroff == false) {
             diefreddy = setTimeout(dietimefreddypd,2500)
@@ -85,12 +112,26 @@ function rightdoor() {
     } else if (ypos > 85) {
        if (rightlighton == false&&poweroff == false) {
          rightlighton = true
+         increaseusage()
+         lightbzz1.play()
+         if (leftlighton) {
+            decreaseby -= 2.5
+            decreaseusage()
+           leftglow = 0
+           buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
+           leftlighton = false
+           clearInterval(leftlight)
+           office.src = "Assets/Images/office2.svg"
+         }
          lightright()
           decreaseby += 2.5
          rightglow = 1
          rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
        } else if (rightlighton&&poweroff == false){
           decreaseby -= 2.5 
+          lightbzz1.pause()
+          lightbzz1.load()
+          decreaseusage()
          rightglow = 0
          rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
          rightlighton = false
@@ -101,6 +142,14 @@ function rightdoor() {
     }  
    }
 }
+function increaseusage() {
+   usagelvl += 1
+   usage.src = "Assets/Images/usage" + usagelvl + ".svg"
+}
+function decreaseusage() {
+   usagelvl -= 1
+   usage.src = "Assets/Images/usage" + usagelvl + ".svg"
+}
 function savenight() {
    localStorage.setItem("night",night)
 }
@@ -109,6 +158,9 @@ function leftdoor() {
    if (lookat == "office"&&buttonleft.style.display == "block") {
     if (leftypos < 61&&dooranimplaying == false) {
       if (leftdoorclosed == false&&poweroff == false)  {
+         increaseusage()
+         slam.load()
+         slam.play()
        shutleft()
          decreaseby += 2.5 
        leftdoorimg.style.display = "block"
@@ -118,6 +170,9 @@ function leftdoor() {
        leftdoorclosed = ""
       } else if (leftdoorclosed&&poweroff == false) {
          shutleftreverse()
+         slam.load()
+         slam.play()
+         decreaseusage()
          decreaseby -= 2.5
          if (bonniepos == "door") {
             deathtimerfunc = setTimeout(dietimebonnie,1500)
@@ -129,12 +184,27 @@ function leftdoor() {
     } else if (leftypos > 85) {
        if (leftlighton == false&&poweroff == false) {
          leftlighton = true
+         increaseusage()
+         lightbzz2.play()
           decreaseby += 2.5
+          if (rightlighton) {
+            decreaseby -= 2.5 
+            lightbzz1.pause()
+            lightbzz1.load()
+            decreaseusage()
+           rightglow = 0
+           rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
+           rightlighton = false
+           clearInterval(rightlight)
+           office.src = "Assets/Images/office2.svg"
+          }
          lightleft()
          leftglow = 1
          buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
        } else if (leftlighton&&poweroff == false){
           decreaseby -= 2.5
+          lightbzz2.pause()
+          decreaseusage()
          leftglow = 0
          buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
          leftlighton = false
@@ -155,8 +225,8 @@ function shutleftreverse() {
 function leftdoorclosereverse() {
    leftsomething = leftsomething - 1
    var filetype = ".png"
-   if (something < 14) {
-      leftdoorimg.style.height = ""
+   if (leftsomething < 14) {
+      leftdoorimg.style.height = "" 
    }
    leftdoorimg.src = "Assets/Images/door/door" + leftsomething + filetype
 
@@ -686,6 +756,10 @@ function actualnewgame() {
    lookat = "Nightandtime"
    opentext.style.left = ""
   setTimeout(waitsecond,1000)
+  if (night >= 6) {
+   night = 5
+   location.reload()
+}
 }
 function waitsecond() {
    hours = 5
@@ -759,6 +833,8 @@ function leavetime2() {
    opentext.style.cursor = "default"
    opentext.style.zIndex = "999999"
    setTimeout(leavetime3,500)
+   usage.style.display = "block"
+   usagetxt.style.display = "block"
 }
 var energy = document.getElementById("energy")
 var time;
@@ -768,10 +844,54 @@ function leavetime3() {
    bonniepos = "1A"
    powerfunc = setInterval(decreasepower,10)
    time = setInterval(increasetime,45000)
+   officeambience.play()
    if (night == 1) {
+   freddylvl = 0
+   foxylvl = 0
+   bonnielvl = 5
+   chicalvl = 4
+      hello1.play()
    setTimeout(experimentalbonmove, 90000)
    setTimeout(experimentalchicamove,90000)
-   officeambience.play()
+   } else if (night == 2) {
+      freddylvl = 0
+      foxylvl = 3
+      bonnielvl = 8
+      chicalvl = 7
+      hello2.play()
+      movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
+      setTimeout(experimentalbonmove, 20000)
+      setTimeout(experimentalchicamove, 20000)
+   } else if (night == 3) {
+      freddylvl = 3
+      foxylvl = 5
+      bonnielvl = 10
+      chicalvl = 9
+      hello3.play()
+      freddymove = setTimeout(movefreddy,(badrng(500,600) / freddylvl) * 1000)
+      movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
+      setTimeout(experimentalbonmove, 10000)
+      setTimeout(experimentalchicamove, 10000)
+   } else if (night == 4) {
+      freddylvl = 5
+      foxylvl = 8
+      bonnielvl = 13
+      chicalvl = 10
+      hello4.play()
+      freddymove = setTimeout(movefreddy,(badrng(500,600) / freddylvl) * 1000)
+      movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
+      setTimeout(experimentalbonmove, 10000)
+      setTimeout(experimentalchicamove, 10000)
+   } else if (night == 5) {
+      freddylvl = 10
+      foxylvl = 10
+      bonnielvl = 15
+      chicalvl = 14
+      hello5.play()
+      freddymove = setTimeout(movefreddy,(badrng(500,600) / freddylvl) * 1000)
+      movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
+      setTimeout(experimentalbonmove, 10000)
+      setTimeout(experimentalchicamove, 10000)
    }
 }
 var poweroff = false
@@ -787,6 +907,10 @@ function decreasepower() {
       if (lookat == "camera") {
          test = setInterval(bozoreverse,30)
       }
+      usage.style.display = "none"
+      usagetxt.style.display = "none"
+      usagelvl = 2
+      decreaseusage()
       clearInterval(stupid)
       clearInterval(updatecam)
       cams.style.display = "none"
@@ -823,6 +947,7 @@ function decreasepower() {
 }
 function tension() {
    lookat = "tension"
+   nalkloop.play()
    buttonleft.style.display = "none"
    buttonright.style.display = "none"
    office.style.left = "-150%"
@@ -880,6 +1005,8 @@ function youwin() {
    opentext.innerHTML = "5:00 AM"
    clearTimeout(scaryfred)
    time = setInterval(timeupthing,50)
+   usagetxt.style.display = "none"
+   usage.style.display = "none"
    clearTimeout(clearbon)
    clearTimeout(clearchica)
    poweroff = false
@@ -992,6 +1119,9 @@ function fastright() {
    var right2 = ((parseInt(useleft2) * 10) - 10) / 10
    leftdoorimg.style.left = right2 + "%" 
   }
+  if (useleft == -130) {
+   leftdoorimg.style.left = "12%"
+  }
 }
 function fastleftcancel() {
    clearInterval(bozo2)
@@ -1029,7 +1159,7 @@ function fastleft() {
       buttonright.style.left = "99%"
    }
    if (useleft > -139&&useleft != -170&&rightdoorclose) {
-     rightdoorimg.style.left = "97%"
+     rightdoorimg.style.left = "99%"
      rightdoorimg.style.display = "none"
   } else {
    var useleft2 = rightdoorimg.style.left.replace("%","")
@@ -1058,6 +1188,7 @@ function cameraupdown() {
    console.log("yes")
    if (lookat == "office"&&canusecams&&poweroff == false) {
    camthing.style.top = "41%"
+   increaseusage()
    test = setInterval(bozo,30)
       canusecams = false
    setTimeout(waitcams,1000)
@@ -1071,6 +1202,7 @@ function cameraupdown() {
       clearTimeout(movefoxy)
       movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
       }
+      decreaseusage()
       decreaseby -= 2.5
       buttonleft.style.opacity = "1"
       buttonright.style.opacity = "1"
@@ -1454,6 +1586,7 @@ var clearchica;
 function movebonnie() {
    var bonmove;
    if (bonnielvl != 0) {
+      nalk1.play()
    if (bonniepos != "door") {
   clearbon = setTimeout(experimentalbonmove,badrng(2000,1000))
    if (bonniepos == "1A") {
@@ -1541,11 +1674,13 @@ function dietimebonnie() {
    static.style.display = "none"
    map.style.display = "none"
    clearInterval(stupid)
+   jumpscaresound.play()
    jumpscare = setInterval(dietimebonnie2,45)
 }
 var freddytimes = 0
 function dietimefreddypd() {
    lookat = "jumpscare"
+   nalkloop.pause()
    var filetype = ".png"
    office.style = "display: block;height: 110%;width: 150%;left: -23%;top: -4%;"
    office.src = "Assets/Images/Jumpscares/Freddy_jumpscares/po" + freddytimes + "" + filetype
@@ -1562,6 +1697,7 @@ function dietimefreddypd() {
    static.style.display = "none"
    map.style.display = "none"
    clearInterval(stupid)
+   jumpscaresound.play()
    jumpscare = setInterval(dietimepdfreddy2,45)
 }
 function dietimebonnie2() {
@@ -1597,6 +1733,7 @@ function experimentalbonmove2() {
 var chica;
 var chicadeathtime;
 function movechica() {
+   nalk2.play()
    var chicamove;
    if (chicalvl != 0) {
    if (chicapos != "door") {
@@ -1670,8 +1807,36 @@ function checkrightdoorclose() {
       lag2 = false
    }
 }
+var chicascarefunc;
+var chicascarecount = -1
 function dietimechica() {
-   location.reload
+   office.style = "display: block;height: 110%;width: 130%;left: -7%;top: -4%;"
+   rightdoorimg.style.display = "none"
+   leftdoorimg.style.display = "none"
+   buttonleft.style.display = "none"
+   buttonright.style.display = "none"
+   camframe.style.display = "none"
+   cams.style.display = "none"
+   opentext.style.display = "none"
+   energy.style.display = "none"
+   clearInterval(updatecam)
+   static.style.display = "none"
+   map.style.display = "none"
+   usagetxt.style.display = "none"
+   usage.style.display = "none"
+   clearInterval(bozo1)
+   clearInterval(bozo2)
+   clearInterval(stupid)
+   jumpscaresound.play()
+   chicascarefunc = setInterval(dietimechica2, 50)
+}
+function dietimechica2() {
+   chicascarecount += 1
+   office.src = "Assets/Images/Jumpscares/chica_jumpscares/ch" + chicascarecount + ".png"
+   if (chicascarecount >= 20) {
+      chicascarecount = -1
+      restart()
+   }
 }
 var freddymove;
 function movefreddy() {
@@ -1714,7 +1879,7 @@ function foxymove() {
       foxypos = 2
    } else if (foxypos == 2) {
       foxypos = "2A"
-      foxautodeath = setTimeout(checkdoorclosefox,10000)
+      foxautodeath = setTimeout(delayrun,10000)
    }
   }
 }
@@ -1722,10 +1887,12 @@ function delayrun() {
    foxyanimplaying = true
    clearInterval(updatecam)
    clearTimeout(foxautodeath)
+   yeahbuddy.play()
    runfoxfunc = setInterval(foxyrun,45)
 }
 var runfoxfunc;
 var runfoxcount = 0;
+var yeahbuddy = document.getElementById("yeabuddy")
 function foxyrun() {
    runfoxcount += 1
    if (selectedcam == "2A") {
@@ -1747,8 +1914,43 @@ function checkdoorclosefox() {
       foxscare()
    }
 }
+var foxyscarefunc;
+var foxyscarecount = -3
 function foxscare() {
    //add jumpscare
+   office.style = "display: block;height: 110%;width: 130%;left: -7%;top: -4%;"
+   rightdoorimg.style.display = "none"
+   leftdoorimg.style.display = "none"
+   buttonleft.style.display = "none"
+   buttonright.style.display = "none"
+   camframe.style.display = "none"
+   cams.style.display = "none"
+   opentext.style.display = "none"
+   energy.style.display = "none"
+   clearInterval(updatecam)
+   static.style.display = "none"
+   map.style.display = "none"
+   usagetxt.style.display = "none"
+   usage.style.display = "none"
+   clearInterval(bozo1)
+   clearInterval(bozo2)
+   clearInterval(stupid)
+   foxyscarefunc = setInterval(foxyscare2,50)
    console.log("gotcha")
+}
+function foxyscare2() {
+   foxyscarecount += 1
+   office.src = "Assets/Images/Jumpscares/foxy_jumpscares/fo" + foxyscarecount + ".png"
+   if (foxyscarecount == 8) {
+      jumpscaresound.play()
+   }
+   if (foxyscarecount > 17) {
+      foxyscarecount = -3
+      clearInterval(foxyscarefunc)
+      setInterval(foxyscare3,200)
+   }
+}
+function foxyscare3() {
+   location.reload()
 }
    
