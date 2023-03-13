@@ -11,8 +11,10 @@
 <p onmouseover="mousething() + mouseovernew()"onmouseleave="leavething() + mouseleavenew()"id="opentext" class="text" onclick="startingism() + newgame()"></p>
 <p style="display:none;color: white;font-family: cursive;font-size: 275%;">I got bored again</p>
 <p id="energy"style="z-index:1002;display:none;position:absolute;left:2%;top:85%;"class="text">Power:</p>
+<p id="usagetxt"style="z-index:1002;display:none;position:absolute;left:2%;top:75%;"class="text">Usage:</p>
+<img dragable="false" id="usage" src="Assets/Images/usage1.svg">
  
- <img id="baboon" src="Assets/Images/samule.png">
+ <img dragable="false" id="baboon" src="Assets/Images/samule.png">
 <div id="settingsgreen" class="settings"style="top:33%;left:520px;display:none;width:2.5%;background:limegreen;"></div>
  <div id="right" style="z-index:1000;opacity:0;position:absolute;left:90%;top:0%;height:100%;background:green;width:10%;" onmouseleave="fastrightcancel()"onmouseover="fastright2()"></div>
  <div id="left" style="z-index:1000;opacity:0;position:absolute;left:0%;top:0%;height:100%;background:green;width:10%;" onmouseleave="fastleftcancel()"onmouseover="fastleft2()"></div>
@@ -28,23 +30,27 @@
 <div id="cam4b" class="mapbutton" onclick="changecam4b() + anothercamclicked()"></div>
 <div id="boop" style="left:39%"onclick="honk()"></div>
  
- <!--<img id="buttonleft" class="button" src=""> -->
- <img id="buttonright" style="left:99%" onclick="rightdoor()" onmousemove="mousexy(event)"class="button" src="Assets/Images/right00.png">
- <img id="buttonleft" style="left:-2.6%;z-index: 1001;" onclick="leftdoor()" onmousemove="leftmousexy(event)"class="button" src="Assets/Images/left00.png">
- <img  id="camera" style="z-index:10000;opacity:0;right:-10.5%;position:absolute;top:90%;width:58%;height:10%;" src="Assets/Images/camup.svg" onmouseover="cameraupdown()">
- <img id="settingscheck" class="settings" style="top:33%;left:520px;display:none;"src="Assets/Images/Checkanim1.png">
- <img id="newspaper" style="position:absolute" src="Assets/Images/newspaper.png">   
- <img id="office1" style="left:-150%;"class="office"src="Assets/Images/office2.svg">
-<img id="camerathing" src="Assets/Images/load1.svg"> 
-<img id="fan" src="Assets/Images/fan1.png" class="fan">
-<img id="cameraframe"  class="camframe"src="Assets/Images/Cams/frames/1A-BCF.svg"> 
-<img id="static" style="opacity: .3;z-index:1000;position:absolute;"class="camframe" src="Assets/Images/static1.png"> 
-<img id="map" style="display:none;" class="map" src="Assets/Images/Cams/cammap/cammap1A.svg"> 
-<img id="leftdoor" src="Assets/Images/door/door1.png" style="position:absolute;left:12%;top:-2%;display:none;width:16%;">
-<img id="rightdoor" src="Assets/Images/door/rightdoor1.png" style="position:absolute;left:70%;top:-2%;display:none;width:15%;">
- <!-- sounds -->
+ <!--<img dragable="false" id="buttonleft" class="button" src=""> -->
+ <img dragable="false" id="buttonright" style="left:99%" onclick="rightdoor()" onmousemove="mousexy(event)"class="button" src="Assets/Images/right00.png">
+ <img dragable="false" id="buttonleft" style="left:-2.6%;z-index: 1001;" onclick="leftdoor()" onmousemove="leftmousexy(event)"class="button" src="Assets/Images/left00.png">
+ <img dragable="false"  id="camera" style="z-index:10000;opacity:0;right:-10.5%;position:absolute;top:90%;width:58%;height:10%;" src="Assets/Images/camup.svg" onmouseover="cameraupdown()">
+ <img dragable="false" id="settingscheck" class="settings" style="top:33%;left:520px;display:none;"src="Assets/Images/Checkanim1.png">
+ <img dragable="false" id="newspaper" style="position:absolute" src="Assets/Images/newspaper.png">   
+ <img dragable="false" id="office1" style="left:-150%;"class="office"src="Assets/Images/office2.svg">
+<img dragable="false" id="camerathing" src="Assets/Images/load1.svg"> 
+<img dragable="false" id="fan" src="Assets/Images/fan1.png" class="fan">
+<img dragable="false" id="cameraframe"  class="camframe"src="Assets/Images/Cams/frames/1A-BCF.svg"> 
+<img dragable="false" id="static" style="opacity: .3;z-index:1000;position:absolute;"class="camframe" src="Assets/Images/static1.png"> 
+<img dragable="false" id="map" style="display:none;" class="map" src="Assets/Images/Cams/cammap/cammap1A.svg"> 
+<img dragable="false" id="leftdoor" src="Assets/Images/door/door1.png" style="position:absolute;left:-7%;top:-2%;display:none;width:16%;">
+<img dragable="false" id="rightdoor" src="Assets/Images/door/rightdoor1.png" style="position:absolute;left:70%;top:-2%;display:none;width:15%;">
+ <!-- sounds-->
+ <div>
  <audio id="bzzzz" loop volume=".4">
     <source src="Assets/Sounds/office ambience.wav" type="audio/wav">
+ </audio>
+ <audio id="yeabuddy" volume="1">
+    <source src="Assets/Sounds/yeahbuddy.wav" type="audio/wav">
  </audio>
  <audio id="flipcams" volume="1">
     <source src="Assets/Sounds/opencams.wav" type="audio/wav">
@@ -52,6 +58,12 @@
   <audio id="wrrrr" volume=".1">
     <source src="Assets/Sounds/camera startup.wav" type="audio/wav">
  </audio>
+ <audio id="lightbuzz1" volume="1" loop>
+   <source src="Assets/Sounds/light.wav" type="audio/wav">
+</audio>
+<audio id="lightbuzz2" volume="1" loop>
+   <source src="Assets/Sounds/light.wav" type="audio/wav">
+</audio>
    <audio id="light" volume="1">
     <source src="Assets/Sounds/windowscare.wav" type="audio/wav">
  </audio>
@@ -62,6 +74,45 @@
 <audio id="click" volume="1">
 <source src="Assets/Sounds/blip.wav" type="audio/wav">
 </audio>
+<audio id="ahhhhhh" volume="1">
+   <source src="Assets/Sounds/SCREAM.wav" type="audio/wav">
+</audio>
+<audio id="nun" volume="1">
+   <source src="Assets/Sounds/running.wav" type="audio/wav">
+</audio>
+<audio id="nalk1" volume="1">
+   <source src="Assets/Sounds/walking.wav" type="audio/wav">
+</audio>
+<audio id="nalk2" volume="1">
+   <source src="Assets/Sounds/walking.wav" type="audio/wav">
+</audio>
+  <audio id="nalkloop" loop volume="1">
+   <source src="Assets/Sounds/walking.wav" type="audio/wav">
+</audio>
+
+<audio id="powerdown" volume="1">
+   <source src="Assets/Sounds/powerdown.wav" type="audio/wav">
+</audio>
+<audio id="slam" volume="1">
+   <source src="Assets/Sounds/door.wav" type="audio/wav">
+</audio>
+<audio id="hello1" volume="1">
+   <source src="Assets/Sounds/night1.wav" type="audio/wav">
+</audio>
+<audio id="hello2" volume="1">
+   <source src="Assets/Sounds/night2.wav" type="audio/wav">
+</audio>
+<audio id="hello3" volume="1">
+   <source src="Assets/Sounds/night3.wav" type="audio/wav">
+</audio>
+<audio id="hello4" volume="1">
+   <source src="Assets/Sounds/night4.wav" type="audio/wav">
+</audio>
+<audio id="hello5" volume="1">
+   <source src="Assets/Sounds/night5.wav" type="audio/wav">
+</audio>
+</div>
+<!-- SO MANY SOUNDS -->
 <!-- scripts -->
 <link rel="stylesheet" href="Assets/Scripts/style.css">
 <script src="Assets/Scripts/script.js"></script>
