@@ -56,6 +56,8 @@ var boop = document.getElementById("beep")
 var rightdoorimg = document.getElementById("rightdoor")
 // < -155% showbutton
 //too many sounds someone please send help
+
+
 var slam = document.getElementById("slam")
 var lightbzz1 = document.getElementById("lightbuzz1")
 var lightbzz2 = document.getElementById("lightbuzz2")
@@ -67,8 +69,15 @@ var night2 = document.getElementById("hello2")
 var night3 = document.getElementById("hello3")
 var night4 = document.getElementById("hello4")
 var night5 = document.getElementById("hello5")
-
-
+var cutoff = document.getElementById("cutoff")
+var powerdown = document.getElementById("powerdown")
+var musicbox = document.getElementById("musicbox")
+var knock3 = document.getElementById("knock3")
+var knock2 = document.getElementById("knock2")
+var knock1 = document.getElementById("knock1")
+var laugh3 = document.getElementById("laugh3")
+var laugh2 = document.getElementById("laugh2")
+var laugh1 = document.getElementById("laugh1")
 
 
 
@@ -903,7 +912,10 @@ function decreasepower() {
    energy.innerHTML = "Power: " + displaypower
    } else if (power < 1&&poweroff == false) {
       poweroff = true
+      musicbox.play()
       officeambience.pause()
+      cutoff.play()
+      powerdown.play()
       console.log("bozo")
       if (lookat == "camera") {
          test = setInterval(bozoreverse,30)
@@ -922,7 +934,7 @@ function decreasepower() {
       chicapos = "powerout"
       foxypos = "powerout"
       freddypos = "powerout"
-      
+      clearTimeout(foxautodeath)
       clearInterval(deathtimerfunc)
       clearInterval(deathtimerfunc2)
       if (leftdoorclosed) {
@@ -948,6 +960,7 @@ function decreasepower() {
 }
 function tension() {
    lookat = "tension"
+   musicbox.pause()
    nalkloop.play()
    buttonleft.style.display = "none"
    buttonright.style.display = "none"
@@ -1843,6 +1856,14 @@ var freddymove;
 function movefreddy() {
    var freddydelay = (badrng(500,600) / freddylvl) * 1000
    if (freddylvl != 0) {
+      var laugh = badrng(3,1)
+      if (laugh == 1) {
+         laugh1.play()
+      } else if (laugh == 2) {
+         laugh2.play()
+      } else {
+         laugh3.play()
+      }
    if (freddypos == "1A") {
       freddypos = "1B"
       freddymove = setTimeout(movefreddy,freddydelay)
@@ -1911,9 +1932,18 @@ function foxyrun() {
 function checkdoorclosefox() {
    if (leftdoorclosed) {
       foxypos = 0
+      knock1.play()
+      setTimeout(knock5,600)
    } else if (leftdoorclosed == false&&poweroff == false) {
       foxscare()
    }
+}
+function knock5() {
+   knock2.play()
+   setTimeout(knock6,600)
+}
+function knock6() {
+   knock3.play()
 }
 var foxyscarefunc;
 var foxyscarecount = -3
