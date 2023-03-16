@@ -3,6 +3,7 @@ body,html {
     height: 100%;
     width: 100%;
     display: flex;
+    margin: 0px;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -24,13 +25,13 @@ p.text {
   top: 74.5%;
 }
 img.fan {
-  width: 10%;
-  height: 27%;
+  width: 150px;
+  height: 200px;
   z-index: 100;
   position: absolute;
   display: none;
-  left: 48.7%;
-  top: 38.5%;
+  /* left: 48.7%; */
+  /* top: 39.257%; */
 }
 p.loading {
     color: white;
