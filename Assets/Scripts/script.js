@@ -1046,7 +1046,7 @@ function youwin() {
    rightdoorimg.src = "Assets/Images/door/rightdoor1.png"
    buttonleft.style.display = "none"
    minutes = 0
-   night += 1
+   night = parseInt(night) + 1
    lookat = "winscreen"
 }
 function timeupthing() {
