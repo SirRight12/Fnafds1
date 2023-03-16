@@ -666,7 +666,11 @@ function startgame() {
    conttext.style.cursor = "pointer"
    conttext.addEventListener("mouseover", function() {
      if (finishintro&&insettings == false) {
-       conttext.innerHTML = "Continue <<<"
+        night = localStorage.getItem("night")
+        if (night == "undefined") {
+           night = 1
+        }
+       conttext.innerHTML = "Continue <<< Night: " + night
      } 
     })
      conttext.addEventListener("mouseleave", function() {
@@ -1492,7 +1496,7 @@ function fanspin() {
     fantimes += 1 
     fan.src = "Assets/Images/fan" + fantimes + ".png"
     if (fantimes >= 3) {
-      fantimes = 1
+      fantimes = 0
     }
 }
 var foxyanimplaying = false
