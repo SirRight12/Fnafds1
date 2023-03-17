@@ -928,6 +928,8 @@ function decreasepower() {
       usagetxt.style.display = "none"
       usagelvl = 2
       decreaseusage()
+      usagelvl = 1 
+      usage.src = "Assets/Images/usage1.svg"
       clearInterval(stupid)
       clearInterval(updatecam)
       cams.style.display = "none"
