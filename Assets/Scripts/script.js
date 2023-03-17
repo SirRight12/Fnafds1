@@ -110,7 +110,7 @@ function rightdoor() {
          if (freddypos == "4B"&&poweroff == false) {
             diefreddy = setTimeout(dietimefreddypd,2500)
          }
-         decreaseby -= 2.5
+         decreaseby += 2
          leftdoorimg.style.display = "none"
          rightdoorclose = ""
          if (chicapos == "door") {
@@ -124,7 +124,7 @@ function rightdoor() {
          increaseusage()
          lightbzz1.play()
          if (leftlighton) {
-            decreaseby -= 2.5
+            decreaseby += 2
             decreaseusage()
            leftglow = 0
            buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
@@ -137,7 +137,7 @@ function rightdoor() {
          rightglow = 1
          rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
        } else if (rightlighton&&poweroff == false){
-          decreaseby -= 2.5 
+          decreaseby += 2 
           lightbzz1.pause()
           lightbzz1.load()
           decreaseusage()
@@ -182,7 +182,7 @@ function leftdoor() {
          slam.load()
          slam.play()
          decreaseusage()
-         decreaseby -= 2.5
+         decreaseby += 2
          if (bonniepos == "door") {
             deathtimerfunc = setTimeout(dietimebonnie,1500)
          }
@@ -197,7 +197,7 @@ function leftdoor() {
          lightbzz2.play()
           decreaseby += 2
           if (rightlighton) {
-            decreaseby -= 2.5 
+            decreaseby += 2 
             lightbzz1.pause()
             lightbzz1.load()
             decreaseusage()
@@ -211,7 +211,7 @@ function leftdoor() {
          leftglow = 1
          buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
        } else if (leftlighton&&poweroff == false){
-          decreaseby -= 2.5
+          decreaseby += 2
           lightbzz2.pause()
           decreaseusage()
          leftglow = 0
@@ -1223,7 +1223,7 @@ function cameraupdown() {
       movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
       }
       decreaseusage()
-      decreaseby -= 2.5
+      decreaseby += 2
       buttonleft.style.opacity = "1"
       buttonright.style.opacity = "1"
       cams.src = "Assets/Images/camup.svg"
