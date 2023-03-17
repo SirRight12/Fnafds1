@@ -94,7 +94,7 @@ function rightdoor() {
        slam.load()
        slam.play()
        increaseusage()
-         decreaseby += 2
+         decreaseby += 2.5
        doorright = 1
          clearTimeout(diefreddy)
        dooranimplaying = true
@@ -110,7 +110,7 @@ function rightdoor() {
          if (freddypos == "4B"&&poweroff == false) {
             diefreddy = setTimeout(dietimefreddypd,2500)
          }
-         decreaseby += 2
+         decreaseby -= 2.5
          leftdoorimg.style.display = "none"
          rightdoorclose = ""
          if (chicapos == "door") {
@@ -124,7 +124,7 @@ function rightdoor() {
          increaseusage()
          lightbzz1.play()
          if (leftlighton) {
-            decreaseby += 2
+            decreaseby -= 2.5
             decreaseusage()
            leftglow = 0
            buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
@@ -133,11 +133,11 @@ function rightdoor() {
            office.src = "Assets/Images/office2.svg"
          }
          lightright()
-          decreaseby += 2
+          decreaseby += 2.5
          rightglow = 1
          rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
        } else if (rightlighton&&poweroff == false){
-          decreaseby += 2 
+          decreaseby -= 2.5 
           lightbzz1.pause()
           lightbzz1.load()
           decreaseusage()
@@ -171,7 +171,7 @@ function leftdoor() {
          slam.load()
          slam.play()
        shutleft()
-         decreaseby += 2 
+         decreaseby += 2.5 
        leftdoorimg.style.display = "block"
        doorleft = 1
        dooranimplaying = true
@@ -182,7 +182,7 @@ function leftdoor() {
          slam.load()
          slam.play()
          decreaseusage()
-         decreaseby += 2
+         decreaseby -= 2.5
          if (bonniepos == "door") {
             deathtimerfunc = setTimeout(dietimebonnie,1500)
          }
@@ -195,9 +195,9 @@ function leftdoor() {
          leftlighton = true
          increaseusage()
          lightbzz2.play()
-          decreaseby += 2
+          decreaseby += 2.5
           if (rightlighton) {
-            decreaseby += 2 
+            decreaseby -= 2.5 
             lightbzz1.pause()
             lightbzz1.load()
             decreaseusage()
@@ -211,7 +211,7 @@ function leftdoor() {
          leftglow = 1
          buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
        } else if (leftlighton&&poweroff == false){
-          decreaseby += 2
+          decreaseby -= 2.5
           lightbzz2.pause()
           decreaseusage()
          leftglow = 0
@@ -765,7 +765,7 @@ function actualnewgame() {
    deletelater.innerHTML = "6:00 AM"
    document.body.appendChild(deletelater)
    opentext.innerHTML = "Night " + night
-   opentext.style.top = "25%"
+   opentext.style.top = "200px"
    lookat = "Nightandtime"
    opentext.style.left = ""
   setTimeout(waitsecond,1000)
@@ -951,13 +951,11 @@ function decreasepower() {
       clearInterval(rightlight)
       clearInterval(leftlight)
       lookat = "office"
-
       setTimeout(scaryfred1,1000)
       energy.innerHTML = "Power: 0%"
    darkoffice()
       setTimeout(buttonoff,500)
       rightdoorimg.style.display = "none"
-      leftdoorimg.style.display = "none"
     closeone = setTimeout(tension,badrng(1000,14000))
       office.style.display = "block"
       map.style.display = "none"
@@ -1212,7 +1210,7 @@ function cameraupdown() {
    test = setInterval(bozo,30)
       canusecams = false
    setTimeout(waitcams,1000)
-      decreaseby += 2
+      decreaseby += 2.5
    buttonleft.style.opacity = "0"
    buttonright.style.opacity = "0"
    cams.src = "Assets/Images/camdown.svg"
@@ -1223,7 +1221,7 @@ function cameraupdown() {
       movefoxy = setTimeout(foxymove, ((badrng(10,14) * 10000) / foxylvl))
       }
       decreaseusage()
-      decreaseby += 2
+      decreaseby -= 2.5
       buttonleft.style.opacity = "1"
       buttonright.style.opacity = "1"
       cams.src = "Assets/Images/camup.svg"
