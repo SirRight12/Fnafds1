@@ -110,7 +110,7 @@ function rightdoor() {
          if (freddypos == "4B"&&poweroff == false) {
             diefreddy = setTimeout(dietimefreddypd,2500)
          }
-         decreaseby += 2
+         decreaseby -= 2
          leftdoorimg.style.display = "none"
          rightdoorclose = ""
          if (chicapos == "door") {
@@ -133,7 +133,7 @@ function rightdoor() {
            office.src = "Assets/Images/office2.svg"
          }
          lightright()
-          decreaseby += 2
+          decreaseby -= 2
          rightglow = 1
          rightbutton.src = "Assets/Images/right" + rightglow + "" + doorright + ".png"
        } else if (rightlighton&&poweroff == false){
@@ -182,7 +182,7 @@ function leftdoor() {
          slam.load()
          slam.play()
          decreaseusage()
-         decreaseby += 2
+         decreaseby -= 2
          if (bonniepos == "door") {
             deathtimerfunc = setTimeout(dietimebonnie,1500)
          }
@@ -211,7 +211,7 @@ function leftdoor() {
          leftglow = 1
          buttonleft.src = "Assets/Images/left" + leftglow + "" + doorleft + ".png"
        } else if (leftlighton&&poweroff == false){
-          decreaseby += 2
+          decreaseby -= 2
           lightbzz2.pause()
           decreaseusage()
          leftglow = 0
